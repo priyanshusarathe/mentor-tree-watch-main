@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Education Risk Management Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 247 47% 96%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --card-hover: 210 40% 98%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary education blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 221 83% 95%;
+
+    /* Secondary system */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted system */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent system */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Risk level system */
+    --risk-safe: 142 76% 36%;
+    --risk-safe-foreground: 0 0% 100%;
+    --risk-safe-light: 142 76% 95%;
+    
+    --risk-warning: 45 93% 47%;
+    --risk-warning-foreground: 0 0% 100%;
+    --risk-warning-light: 45 93% 95%;
+    
+    --risk-critical: 0 84% 60%;
+    --risk-critical-foreground: 0 0% 100%;
+    --risk-critical-light: 0 84% 95%;
+
+    /* Destructive system */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border and input system */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(221 83% 63%));
+    --gradient-risk-safe: linear-gradient(135deg, hsl(var(--risk-safe)), hsl(142 76% 46%));
+    --gradient-risk-warning: linear-gradient(135deg, hsl(var(--risk-warning)), hsl(45 93% 57%));
+    --gradient-risk-critical: linear-gradient(135deg, hsl(var(--risk-critical)), hsl(0 84% 70%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Base colors - dark mode */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    /* Card system - dark mode */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --card-hover: 217.2 32.6% 17.5%;
+
+    /* Popover system - dark mode */
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary education blue - dark mode */
+    --primary: 221 83% 63%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --primary-light: 221 83% 15%;
+
+    /* Secondary system - dark mode */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted system - dark mode */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    /* Accent system - dark mode */
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Risk level system - dark mode */
+    --risk-safe: 142 76% 46%;
+    --risk-safe-foreground: 222.2 84% 4.9%;
+    --risk-safe-light: 142 76% 15%;
+    
+    --risk-warning: 45 93% 57%;
+    --risk-warning-foreground: 222.2 84% 4.9%;
+    --risk-warning-light: 45 93% 15%;
+    
+    --risk-critical: 0 84% 70%;
+    --risk-critical-foreground: 222.2 84% 4.9%;
+    --risk-critical-light: 0 84% 15%;
+
+    /* Destructive system - dark mode */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border and input system - dark mode */
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 221 83% 63%;
+
+    /* Gradients - dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(221 83% 73%));
+    --gradient-risk-safe: linear-gradient(135deg, hsl(var(--risk-safe)), hsl(142 76% 56%));
+    --gradient-risk-warning: linear-gradient(135deg, hsl(var(--risk-warning)), hsl(45 93% 67%));
+    --gradient-risk-critical: linear-gradient(135deg, hsl(var(--risk-critical)), hsl(0 84% 80%));
+
+    /* Shadows - dark mode */
+    --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -2px hsl(0 0% 0% / 0.2);
+    --shadow-large: 0 20px 25px -5px hsl(0 0% 0% / 0.3), 0 10px 10px -5px hsl(0 0% 0% / 0.2);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
