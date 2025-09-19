@@ -143,7 +143,7 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                   <TableHead>Fee Status</TableHead>
                   <TableHead>Trend</TableHead>
                   <TableHead>AI Risk Level</TableHead>
-                  <TableHead>AI Confidence</TableHead>
+                  <TableHead>Dropout Chance</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -214,20 +214,15 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                     </TableCell>
                     <TableCell>
                       {student.aiPrediction ? (
-                        <div className="flex flex-col gap-1">
-                          <Badge 
-                            className={
-                              student.aiPrediction.dropoutProbability < 0.3 ? "bg-risk-safe text-risk-safe-foreground" :
-                              student.aiPrediction.dropoutProbability < 0.6 ? "bg-risk-warning text-risk-warning-foreground" :
-                              "bg-risk-critical text-risk-critical-foreground"
-                            }
-                          >
-                            AI: {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">
-                            {(student.aiPrediction.confidence * 100).toFixed(0)}% confidence
-                          </span>
-                        </div>
+                        <Badge 
+                          className={
+                            student.aiPrediction.dropoutProbability < 0.3 ? "bg-risk-safe text-risk-safe-foreground" :
+                            student.aiPrediction.dropoutProbability < 0.6 ? "bg-risk-warning text-risk-warning-foreground" :
+                            "bg-risk-critical text-risk-critical-foreground"
+                          }
+                        >
+                          {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
+                        </Badge>
                       ) : (
                         <span className="text-muted-foreground text-sm">No AI data</span>
                       )}

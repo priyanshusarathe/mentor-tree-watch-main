@@ -148,13 +148,10 @@ export function StudentDetailView({ student, onBack }: StudentDetailViewProps) {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Target className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm font-medium">Dropout Probability</span>
+                  <span className="text-sm font-medium">Dropout Chance</span>
                 </div>
                 <div className="text-3xl font-bold text-primary">
                   {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Confidence: {(student.aiPrediction.confidence * 100).toFixed(0)}%
                 </div>
               </div>
 

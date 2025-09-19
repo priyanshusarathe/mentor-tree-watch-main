@@ -26,3 +26,4 @@ export function useAIPredictions(students: Student[]) {
     });
   }, [students]);
 }
+
