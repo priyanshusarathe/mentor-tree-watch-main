@@ -5,8 +5,11 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> origin/ai
 
 interface RegisterFormProps {
   onSwitchToLogin: () => void;
@@ -14,7 +17,10 @@ interface RegisterFormProps {
 }
 
 export function RegisterForm({ onSwitchToLogin, onRegisterSuccess }: RegisterFormProps) {
+<<<<<<< HEAD
   const navigate = useNavigate();
+=======
+>>>>>>> origin/ai
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,6 +66,7 @@ export function RegisterForm({ onSwitchToLogin, onRegisterSuccess }: RegisterFor
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+<<<<<<< HEAD
       <Card className="w-full max-w-md mx-auto shadow-medium bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20">
         <CardHeader className="text-center">
           <div className="flex items-center justify-between mb-4">
@@ -77,6 +84,14 @@ export function RegisterForm({ onSwitchToLogin, onRegisterSuccess }: RegisterFor
             Mentor Registration
           </CardTitle>
           <CardDescription className="text-slate-300">
+=======
+      <Card className="w-full max-w-md mx-auto shadow-medium">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            Mentor Registration
+          </CardTitle>
+          <CardDescription>
+>>>>>>> origin/ai
             Create your account to start monitoring student risk levels
           </CardDescription>
         </CardHeader>

@@ -89,6 +89,7 @@
   }
 
   .dark {
+<<<<<<< HEAD
     /* Base colors - very dark mode with blue tint */
     --background: 230 35% 7%;
     --foreground: 210 40% 98%;
@@ -97,15 +98,32 @@
     --card: 230 25% 12%;
     --card-foreground: 210 40% 98%;
     --card-hover: 230 25% 16%;
+=======
+    /* Base colors - dark mode */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    /* Card system - dark mode */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --card-hover: 217.2 32.6% 17.5%;
+>>>>>>> origin/ai
 
     /* Popover system - dark mode */
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
+<<<<<<< HEAD
     /* Primary cyan/blue - dark mode */
     --primary: 195 100% 50%;
     --primary-foreground: 230 35% 7%;
     --primary-light: 195 100% 15%;
+=======
+    /* Primary education blue - dark mode */
+    --primary: 221 83% 63%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --primary-light: 221 83% 15%;
+>>>>>>> origin/ai
 
     /* Secondary system - dark mode */
     --secondary: 217.2 32.6% 17.5%;

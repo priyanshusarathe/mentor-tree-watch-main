@@ -26,5 +26,9 @@
       "@/*": ["./src/*"]
     }
   },
+<<<<<<< HEAD
   "include": ["src", "routes/server.js"]
+=======
+  "include": ["src"]
+>>>>>>> origin/ai
 }

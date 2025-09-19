@@ -1,19 +1,35 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+=======
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+>>>>>>> origin/ai
 import { RiskOverviewCards } from "@/components/dashboard/RiskOverviewCards";
 import { StudentTable, Student } from "@/components/dashboard/StudentTable";
 import { StudentDetailView } from "@/components/student/StudentDetailView";
 import { NotificationsPanel } from "@/components/dashboard/NotificationsPanel";
+<<<<<<< HEAD
 import { LogOut } from "lucide-react";
 
 // Mock student data
+=======
+import { useAIPredictions } from "@/hooks/useAIPredictions";
+import { LogOut } from "lucide-react";
+// Mock student data with core fields only
+>>>>>>> origin/ai
 const mockStudents: Student[] = [
   {
     id: "1",
     rollNo: "CS001",
+<<<<<<< HEAD
     name: "Pallavi rana",
+=======
+    name: "Pallavi Rana",
+>>>>>>> origin/ai
     attendance: 95,
     avgTestScore: 88,
     attempts: 3,
@@ -21,14 +37,22 @@ const mockStudents: Student[] = [
     trend: "up",
     class: "CS-A",
     department: "Computer Science",
+<<<<<<< HEAD
   },
   {
     id: "2",
+=======
+    feeStatus: "Paid"
+  },
+  {
+    id: "2", 
+>>>>>>> origin/ai
     rollNo: "CS002",
     name: "Shiv Chaurasiya",
     attendance: 72,
     avgTestScore: 65,
     attempts: 4,
+<<<<<<< HEAD
     riskLevel: "medium",
     trend: "down",
     class: "CS-A",
@@ -37,26 +61,50 @@ const mockStudents: Student[] = [
   {
     id: "3",
     rollNo: "EE003",
+=======
+    riskLevel: "medium", 
+    trend: "down",
+    class: "CS-A",
+    department: "Computer Science",
+    feeStatus: "Pending"
+  },
+  {
+    id: "3",
+    rollNo: "EE003", 
+>>>>>>> origin/ai
     name: "Rachit Gupta",
     attendance: 58,
     avgTestScore: 45,
     attempts: 6,
     riskLevel: "high",
     trend: "down",
+<<<<<<< HEAD
     class: "EE-B",
     department: "Electrical Engineering",
+=======
+    class: "EE-B", 
+    department: "Electrical Engineering",
+    feeStatus: "Overdue"
+>>>>>>> origin/ai
   },
   {
     id: "4",
     rollNo: "ME004",
+<<<<<<< HEAD
     name: "Priya yadav",
     attendance: 89,
     avgTestScore: 92,
+=======
+    name: "Priya Sharma",
+    attendance: 88,
+    avgTestScore: 82,
+>>>>>>> origin/ai
     attempts: 2,
     riskLevel: "low",
     trend: "up",
     class: "ME-A",
     department: "Mechanical Engineering",
+<<<<<<< HEAD
   },
   {
     id: "5",
@@ -82,6 +130,23 @@ const mockStudents: Student[] = [
     class: "EE-A",
     department: "Electrical Engineering",
   },
+=======
+    feeStatus: "Paid"
+  },
+  {
+    id: "5",
+    rollNo: "IT005",
+    name: "Arjun Singh",
+    attendance: 65,
+    avgTestScore: 55,
+    attempts: 5,
+    riskLevel: "high",
+    trend: "down",
+    class: "IT-B",
+    department: "Information Technology",
+    feeStatus: "Overdue"
+  }
+>>>>>>> origin/ai
 ];
 
 interface DashboardPageProps {
@@ -90,6 +155,7 @@ interface DashboardPageProps {
 
 export default function DashboardPage({ onLogout }: DashboardPageProps) {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+<<<<<<< HEAD
   const [showProfile, setShowProfile] = useState(false);
 
   // Calculate risk statistics
@@ -99,6 +165,23 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
     (s) => s.riskLevel === "medium"
   ).length;
   const highRisk = mockStudents.filter((s) => s.riskLevel === "high").length;
+=======
+  const navigate = useNavigate();
+
+  // Generate AI predictions for all students
+  const studentsWithAI = useAIPredictions(mockStudents);
+
+  // Calculate risk statistics based on AI predictions
+  const totalStudents = studentsWithAI.length;
+  const lowRisk = studentsWithAI.filter(s => s.riskLevel === "low").length;
+  const mediumRisk = studentsWithAI.filter(s => s.riskLevel === "medium").length;
+  const highRisk = studentsWithAI.filter(s => s.riskLevel === "high").length;
+
+  const handleLogout = () => {
+    if (onLogout) onLogout();
+    navigate('/auth');
+  };
+>>>>>>> origin/ai
 
   if (selectedStudent) {
     return (
@@ -123,6 +206,7 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
+<<<<<<< HEAD
               {/* Logo: file copied to public/raah-logo.jpg */}
               <img
                 src="/raah-logo.jpg"
@@ -189,6 +273,30 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
                 </div>
               )}
             </div>
+=======
+              <div className="w-16 h-16 flex items-center justify-center">
+                <img 
+                  src="/Raah.png" 
+                  alt="RAAH Logo" 
+                  className="w-16 h-16"
+                />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                  RAAH - Rise Above Academic Hurdles
+                </h1>
+                <p className="text-muted-foreground">Monitor and assess student dropout risk</p>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              onClick={handleLogout}
+              className="flex items-center gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              Logout
+            </Button>
+>>>>>>> origin/ai
           </div>
         </div>
       </motion.header>
@@ -205,7 +313,11 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
 
         {/* Student Table */}
         <StudentTable
+<<<<<<< HEAD
           students={mockStudents}
+=======
+          students={studentsWithAI}
+>>>>>>> origin/ai
           onStudentClick={setSelectedStudent}
         />
 
@@ -215,3 +327,7 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/ai

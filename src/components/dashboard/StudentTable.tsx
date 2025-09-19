@@ -18,6 +18,17 @@ export interface Student {
   trend: "up" | "down" | "stable";
   class: string;
   department: string;
+<<<<<<< HEAD
+=======
+  feeStatus: "Paid" | "Pending" | "Overdue";
+  // AI Prediction Data
+  aiPrediction?: {
+    dropoutProbability: number;
+    confidence: number;
+    keyFactors: string[];
+    recommendations: string[];
+  };
+>>>>>>> origin/ai
 }
 
 interface StudentTableProps {
@@ -132,8 +143,15 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                   <TableHead>Attendance %</TableHead>
                   <TableHead>Avg Score</TableHead>
                   <TableHead>Attempts</TableHead>
+<<<<<<< HEAD
                   <TableHead>Trend</TableHead>
                   <TableHead>Risk Level</TableHead>
+=======
+                  <TableHead>Fee Status</TableHead>
+                  <TableHead>Trend</TableHead>
+                  <TableHead>AI Risk Level</TableHead>
+                  <TableHead>Dropout Chance</TableHead>
+>>>>>>> origin/ai
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -168,6 +186,20 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                     </TableCell>
                     <TableCell>{student.attempts}</TableCell>
                     <TableCell>
+<<<<<<< HEAD
+=======
+                      <Badge 
+                        className={
+                          student.feeStatus === "Paid" ? "bg-risk-safe text-risk-safe-foreground" :
+                          student.feeStatus === "Pending" ? "bg-risk-warning text-risk-warning-foreground" :
+                          "bg-risk-critical text-risk-critical-foreground"
+                        }
+                      >
+                        {student.feeStatus}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+>>>>>>> origin/ai
                       <div className="flex items-center">
                         {student.trend === "up" ? (
                           <TrendingUp className="h-4 w-4 text-risk-safe mr-1" />
@@ -191,6 +223,24 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                         {student.riskLevel.toUpperCase()} RISK
                       </Badge>
                     </TableCell>
+<<<<<<< HEAD
+=======
+                    <TableCell>
+                      {student.aiPrediction ? (
+                        <Badge 
+                          className={
+                            student.aiPrediction.dropoutProbability < 0.3 ? "bg-risk-safe text-risk-safe-foreground" :
+                            student.aiPrediction.dropoutProbability < 0.6 ? "bg-risk-warning text-risk-warning-foreground" :
+                            "bg-risk-critical text-risk-critical-foreground"
+                          }
+                        >
+                          {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
+                        </Badge>
+                      ) : (
+                        <span className="text-muted-foreground text-sm">No AI data</span>
+                      )}
+                    </TableCell>
+>>>>>>> origin/ai
                   </motion.tr>
                 ))}
               </TableBody>

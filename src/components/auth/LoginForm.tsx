@@ -5,16 +5,24 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> origin/ai
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
   onLoginSuccess: () => void;
 }
 
+<<<<<<< HEAD
 export function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginFormProps) {
   const navigate = useNavigate();
+=======
+
+export function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginFormProps) {
+>>>>>>> origin/ai
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +56,7 @@ export function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginFormProps
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+<<<<<<< HEAD
       <Card className="w-full max-w-md mx-auto shadow-medium bg-slate-800/50 backdrop-blur-sm border border-cyan-400/20">
         <CardHeader className="text-center">
           <div className="flex items-center justify-between mb-4">
@@ -65,6 +74,14 @@ export function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginFormProps
             Mentor Login
           </CardTitle>
           <CardDescription className="text-slate-300">
+=======
+      <Card className="w-full max-w-md mx-auto shadow-medium">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            Mentor Login
+          </CardTitle>
+          <CardDescription>
+>>>>>>> origin/ai
             Access your student risk management dashboard
           </CardDescription>
         </CardHeader>
