@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Brain, AlertTriangle, CheckCircle, Target } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { Student } from "../dashboard/StudentTable";
 import { AnimatedTree } from "./AnimatedTree";
@@ -129,6 +129,68 @@ export function StudentDetailView({ student, onBack }: StudentDetailViewProps) {
           </CardContent>
         </Card>
       </div>
+
+      {/* AI Prediction Section */}
+      {student.aiPrediction && (
+        <Card className="shadow-soft border-l-4 border-l-primary">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Brain className="h-5 w-5 text-primary" />
+              AI-Powered Dropout Risk Assessment
+            </CardTitle>
+            <CardDescription>
+              Machine learning analysis based on academic, financial, and demographic factors
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Risk Probability */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <Target className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">Dropout Probability</span>
+                </div>
+                <div className="text-3xl font-bold text-primary">
+                  {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Confidence: {(student.aiPrediction.confidence * 100).toFixed(0)}%
+                </div>
+              </div>
+
+              {/* Key Factors */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">Key Risk Factors</span>
+                </div>
+                <div className="space-y-1">
+                  {student.aiPrediction.keyFactors.slice(0, 3).map((factor, index) => (
+                    <div key={index} className="text-sm text-muted-foreground">
+                      • {factor}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium">AI Recommendations</span>
+                </div>
+                <div className="space-y-1">
+                  {student.aiPrediction.recommendations.slice(0, 3).map((recommendation, index) => (
+                    <div key={index} className="text-sm text-muted-foreground">
+                      • {recommendation}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -6,7 +6,77 @@ import { RiskOverviewCards } from "@/components/dashboard/RiskOverviewCards";
 import { StudentTable, Student } from "@/components/dashboard/StudentTable";
 import { StudentDetailView } from "@/components/student/StudentDetailView";
 import { NotificationsPanel } from "@/components/dashboard/NotificationsPanel";
+import { useAIPredictions } from "@/hooks/useAIPredictions";
 import { LogOut } from "lucide-react";
+// Mock student data with core fields only
+const mockStudents: Student[] = [
+  {
+    id: "1",
+    rollNo: "CS001",
+    name: "Pallavi Rana",
+    attendance: 95,
+    avgTestScore: 88,
+    attempts: 3,
+    riskLevel: "low",
+    trend: "up",
+    class: "CS-A",
+    department: "Computer Science",
+    feeStatus: "Paid"
+  },
+  {
+    id: "2", 
+    rollNo: "CS002",
+    name: "Shiv Chaurasiya",
+    attendance: 72,
+    avgTestScore: 65,
+    attempts: 4,
+    riskLevel: "medium", 
+    trend: "down",
+    class: "CS-A",
+    department: "Computer Science",
+    feeStatus: "Pending"
+  },
+  {
+    id: "3",
+    rollNo: "EE003", 
+    name: "Rachit Gupta",
+    attendance: 58,
+    avgTestScore: 45,
+    attempts: 6,
+    riskLevel: "high",
+    trend: "down",
+    class: "EE-B", 
+    department: "Electrical Engineering",
+    feeStatus: "Overdue"
+  },
+  {
+    id: "4",
+    rollNo: "ME004",
+    name: "Priya Sharma",
+    attendance: 88,
+    avgTestScore: 82,
+    attempts: 2,
+    riskLevel: "low",
+    trend: "up",
+    class: "ME-A",
+    department: "Mechanical Engineering",
+    feeStatus: "Paid"
+  },
+  {
+    id: "5",
+    rollNo: "IT005",
+    name: "Arjun Singh",
+    attendance: 65,
+    avgTestScore: 55,
+    attempts: 5,
+    riskLevel: "high",
+    trend: "down",
+    class: "IT-B",
+    department: "Information Technology",
+    feeStatus: "Overdue"
+  }
+];
+
 interface DashboardPageProps {
   onLogout: () => void;
 }
@@ -15,11 +85,14 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const navigate = useNavigate();
 
-  // Calculate risk statistics
-  const totalStudents = mockStudents.length;
-  const lowRisk = mockStudents.filter(s => s.riskLevel === "low").length;
-  const mediumRisk = mockStudents.filter(s => s.riskLevel === "medium").length;
-  const highRisk = mockStudents.filter(s => s.riskLevel === "high").length;
+  // Generate AI predictions for all students
+  const studentsWithAI = useAIPredictions(mockStudents);
+
+  // Calculate risk statistics based on AI predictions
+  const totalStudents = studentsWithAI.length;
+  const lowRisk = studentsWithAI.filter(s => s.riskLevel === "low").length;
+  const mediumRisk = studentsWithAI.filter(s => s.riskLevel === "medium").length;
+  const highRisk = studentsWithAI.filter(s => s.riskLevel === "high").length;
 
   const handleLogout = () => {
     if (onLogout) onLogout();
@@ -87,7 +160,7 @@ export default function DashboardPage({ onLogout }: DashboardPageProps) {
 
         {/* Student Table */}
         <StudentTable
-          students={mockStudents}
+          students={studentsWithAI}
           onStudentClick={setSelectedStudent}
         />
 

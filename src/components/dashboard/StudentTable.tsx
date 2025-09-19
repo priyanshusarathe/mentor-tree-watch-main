@@ -19,6 +19,13 @@ export interface Student {
   class: string;
   department: string;
   feeStatus: "Paid" | "Pending" | "Overdue";
+  // AI Prediction Data
+  aiPrediction?: {
+    dropoutProbability: number;
+    confidence: number;
+    keyFactors: string[];
+    recommendations: string[];
+  };
 }
 
 interface StudentTableProps {
@@ -135,7 +142,8 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                   <TableHead>Attempts</TableHead>
                   <TableHead>Fee Status</TableHead>
                   <TableHead>Trend</TableHead>
-                  <TableHead>Risk Level</TableHead>
+                  <TableHead>AI Risk Level</TableHead>
+                  <TableHead>AI Confidence</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -203,6 +211,26 @@ export function StudentTable({ students, onStudentClick }: StudentTableProps) {
                       <Badge {...getRiskBadgeProps(student.riskLevel)}>
                         {student.riskLevel.toUpperCase()} RISK
                       </Badge>
+                    </TableCell>
+                    <TableCell>
+                      {student.aiPrediction ? (
+                        <div className="flex flex-col gap-1">
+                          <Badge 
+                            className={
+                              student.aiPrediction.dropoutProbability < 0.3 ? "bg-risk-safe text-risk-safe-foreground" :
+                              student.aiPrediction.dropoutProbability < 0.6 ? "bg-risk-warning text-risk-warning-foreground" :
+                              "bg-risk-critical text-risk-critical-foreground"
+                            }
+                          >
+                            AI: {(student.aiPrediction.dropoutProbability * 100).toFixed(1)}%
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">
+                            {(student.aiPrediction.confidence * 100).toFixed(0)}% confidence
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-muted-foreground text-sm">No AI data</span>
+                      )}
                     </TableCell>
                   </motion.tr>
                 ))}
